@@ -6,12 +6,14 @@ const cookieParser = require('cookie-parser');
 require('dotenv').config();
 const mongoose = require('mongoose');
 
+// Importing Routes
+const userRoutes = require('./Routes/api/User')
+
+
 const connectDatabase = require('./Config/connectDatabase');
 
 
 const PORT = 3500;
-
-
 const app = express()
 
 
@@ -20,10 +22,13 @@ connectDatabase();
 
 // Built-in Middlewares
 app.use(express.json());
+app.use(express.urlencoded({extended: true}));
 app.use(cors());
 app.use(cookieParser());
 
 
+// Routes
+app.use(userRoutes);
 
 
 
