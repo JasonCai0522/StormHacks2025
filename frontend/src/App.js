@@ -1,23 +1,30 @@
 import logo from './logo.svg';
 import './App.css';
 
+// Will stay on page
+import Header from './Header';
+import Nav from "./Nav";
+import Footer from "./Footer";
+
+import Home from './Home';
+//import NewPost from './NewPost';
+//import PostPage from './PostPage';
+import About from './About';
+//import Missing from './Missing';
+
+import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header />
+      <Nav />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+      </Routes>
+      <Footer />
     </div>
   );
 }
