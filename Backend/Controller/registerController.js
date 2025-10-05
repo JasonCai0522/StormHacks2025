@@ -1,11 +1,11 @@
 const bcrypt = require('bcrypt');
-const User = require('../Model/User') 
+const User = require('../Model/User');
 
 const registerUser = async (req, res) => {
     const {username, password} = req.body;
     if (!username || !password) return res.status(400).json({"message": "username or password not found"});
 
-    const duplicate = await User.findOne({username:username});
+    const duplicate = await User.findOne({username:username}).exec();
     console.log(duplicate);
 
 
@@ -17,7 +17,7 @@ const registerUser = async (req, res) => {
 
         // Creating and storing a new user
         const result = await User.create({
-            "username":username,
+            "username": username,
             "password": hashedPassword
         })
 

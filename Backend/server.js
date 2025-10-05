@@ -28,7 +28,7 @@ app.use(cookieParser());
 
 
 // Routes
-app.use(userRoutes);
+app.use("/users", userRoutes);
 
 
 
