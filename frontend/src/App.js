@@ -27,7 +27,7 @@ function App() {
     const token = localStorage.getItem('accessToken');
     setIsLoggedIn(!!token);
 
-    const loggedIn = !!token; // ✅ Define it
+    const loggedIn = !!token; 
     setIsLoggedIn(loggedIn);
   
     console.log("🔐 User login state:", loggedIn);

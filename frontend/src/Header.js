@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Button from './Button'
 import { useNavigate } from "react-router-dom";
+import axios from 'axios';
 
 
 const Header = ({ isLoggedIn, setIsLoggedIn }) => {
@@ -22,10 +23,11 @@ const Header = ({ isLoggedIn, setIsLoggedIn }) => {
     navigate("/about");
   };
 
-  const handleLogout = () => {
+  const handleLogout = async () => {
     setIsLoggedIn(false);
     setShowButtons(true);
-    //localStorage.removeItem('accessToken');
+    localStorage.removeItem('accessToken');
+    const response = await axios.get('http://localhost:3500/users/logout')
     navigate("/");
   }
 

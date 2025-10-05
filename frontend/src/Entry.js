@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import fetchWithAuth from './FetchWithAuth';
 
 const Entry = () => {
   const [entry, setEntry] = useState(""); // journal text input
@@ -11,13 +12,13 @@ const Entry = () => {
     setLoading(true);
     setError(null);
 
+
     try {
-    const token = localStorage.getItem('accessToken');
-      const res = await fetch("http://localhost:3500/journal", {
+      const res = await fetchWithAuth("http://localhost:3500/journal", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          "Authorization": `Bearer ${token}`
+          "Authorization": `Bearer ${localStorage.getItem('accessToken')}`
         },
         body: JSON.stringify({ entry }), // ✅ send the journal entry in the body
       });

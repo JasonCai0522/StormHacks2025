@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Button from './Button';
+import fetchWithAuth from './FetchWithAuth';
 
 
 const Timeline = () => {
@@ -12,12 +13,11 @@ const Timeline = () => {
     setError(null);
 
     try {
-        const token = localStorage.getItem('accessToken');
-      const res = await fetch("http://localhost:3500/journal", {
+      const res = await fetchWithAuth("http://localhost:3500/journal", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
-          "Authorization": `Bearer ${token}`
+          "Authorization": `Bearer ${localStorage.getItem('accessToken')}`
         },
       });
 
