@@ -1,0 +1,105 @@
+body {
+    font-family: 'Inter', 'Roboto', sans-serif;
+    background-color: #ffffff;
+    margin: 0;
+    padding: 2rem;
+  }
+  
+  .container {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    max-width: 600px;
+    margin: 0 auto; /* horizontally center the container */
+  }
+  
+  .section {
+    padding-left: 0.5rem;
+  }
+  
+  h2 {
+    margin-top: 0;
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: left; /* Align "Login"/"Register" left */
+  }
+  
+  label {
+    display: block;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+    color: #333;
+    text-align: left; /* Align labels left */
+  }
+  
+  input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1rem;
+    text-align: left; /* Input text starts from left */
+  }
+  
+  .action-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Button left, card right */
+    margin-top: 1.5rem;
+    flex-wrap: wrap;
+  }
+  
+  .black-button {
+    background-color: #000;
+    color: #fff;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+  
+  .black-button:hover {
+    background-color: #333;
+  }
+  
+  .prompt-card {
+    background-color: #e0e0e0;
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    color: #111;
+    max-width: 220px;
+    text-align: center;
+  }
+  
+  /* Mobile Responsive */
+  @media (max-width: 500px) {
+    .container {
+      margin-left: 1rem;
+    }
+  
+    .action-row {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 1rem;
+    }
+  
+    .prompt-button {
+        background-color: #e0e0e0;
+        padding: 0.75rem 1rem;
+        border-radius: 8px;
+        font-size: 0.95rem;
+        color: #111;
+        max-width: 220px;
+        text-align: center;
+        text-decoration: none;
+        transition: background-color 0.2s ease;
+      }
+      
+      .prompt-button:hover {
+        background-color: #d5d5d5;
+        cursor: pointer;
+      }
+  }
