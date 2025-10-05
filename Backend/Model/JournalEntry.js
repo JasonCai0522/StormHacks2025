@@ -13,4 +13,4 @@ const entrySchema = new Schema({
   journalEntries: [{ journalid_: String }],
 });
 
-module.exports = mongoose.model('User', userSchema);
+module.exports = mongoose.model('journalEntry', entrySchema);
