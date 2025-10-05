@@ -70,19 +70,6 @@
   text-decoration: underline; /* <-- adds underline on hover */
 }
 
-/* Footer */
-.App-footer {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  padding: 1em 0;
-  background-color: #f1f1f1;
-  text-align: center;
-  font-size: 0.6rem;
-  box-shadow: 0 -2px 4px rgba(0,0,0,0.1);
-}
-
 /* Link styling */
 .App-link {
   color: #61dafb;
@@ -110,6 +97,24 @@
   }
 }
 
+.main-container {
+  display: flex;
+  margin-top: 30px; /* below fixed header */
+}
+
+.entry.with-sidebar {
+  flex: 1; /* take remaining space */
+  margin-left: 0; /* sidebar already takes space in flex */
+  padding: 20px;
+}
+
+.entry.fullscreen {
+  flex: 1;
+  margin: 0 auto;
+  padding: 20px;
+  max-width: 600px; /* optional, for login/register */
+}
+
 .sidebar {
   width: 200px;              /* adjust width */
   background-color: #f9f9f9;
@@ -119,6 +124,7 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  z-index: 1000; /* higher layer */
 }
 
 .sidebar h2 {
@@ -152,4 +158,30 @@
   display: flex;
   flex-direction: column;  /* stack buttons vertically */
   gap: 50px;               /* space between buttons */
+}
+
+.coaches {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); /* squares */
+  gap: 20px; /* space between buttons */
+  justify-items: center; /* center buttons in each grid cell */
+  align-items: center;
+  padding: 20px;
+}
+
+.coachButtons {
+  width: 100%;
+  aspect-ratio: 1 / 1; /* makes buttons square */
+  background-color: #000;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: transform 0.2s, background-color 0.2s;
+}
+
+.coachButtons:hover {
+  background-color: #333;
+  transform: scale(1.05);
 }
