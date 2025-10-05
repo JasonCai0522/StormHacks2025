@@ -1,18 +1,38 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import axios from 'axios';
 import './Register.css';
 
 const Register = () => {
   const [registerData, setRegisterData] = useState({ username: '', password: '' });
+  const [errorMsg, setErrorMsg] = useState('');
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setRegisterData({ ...registerData, [name]: value });
   };
 
-  const handleSubmit = (e) => {
+  
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Register:', registerData);
+    try {
+      const response = await axios.post('http://localhost:3500/users/register', registerData, {
+        headers: { 'Content-Type': 'application/json' },
+        withCredentials: true
+      });
+
+      console.log('Registration successful:', response.data);
+      setErrorMsg('');
+      navigate('/login'); // redirect to login page after success
+    } catch (error) {
+      console.error('Registration error:', error);
+      if (error.response?.data?.message) {
+        setErrorMsg(error.response.data.message);
+      } else {
+        setErrorMsg('Registration failed. Please try again.');
+      }
+    }
   };
 
   return (
@@ -36,6 +56,9 @@ const Register = () => {
             onChange={handleChange}
             required
           />
+
+          {errorMsg && <p style={{ color: 'red' }}>{errorMsg}</p>}
+
           <div className="action-row">
             <button type="submit" className="black-button">Register</button>
             <Link to="/login" className="prompt-button">
