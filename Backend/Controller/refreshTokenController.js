@@ -15,14 +15,13 @@ const refreshAccessToken = async (req, res) => {
         (err, decoded) => {
             if (err || foundUser.username !== decoded.username) return res.sendStatus(403);
             const accessToken = jwt.sign(
-                {"UserInfo":
+                {"userInfo":
                     {
                         "username": foundUser.username,
-                        "journalEntries":foundUser.journalEntries,
                     }
                 }, // Payload, don't include sensitive information like passwords here
                 process.env.ACCESS_TOKEN_SECRET,
-                {expiresIn : '5m'}
+                {expiresIn : '10m'}
             )
             res.json({ accessToken});
         }

@@ -10,7 +10,7 @@ const userSchema = new Schema({
     type: String,
     required: true,
   },
-  journalEntries: [{ journalid_: String }],
+  journalEntries: [String],
   refreshToken: String,
 });
 
