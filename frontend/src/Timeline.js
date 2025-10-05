@@ -3,6 +3,9 @@ import Button from './Button';
 import fetchWithAuth from './FetchWithAuth';
 import EntryStorage from "./EntryStorage";
 import { getFakerPrompt } from './prompts';
+import { getDavidPrompt } from './prompts';
+import { getMichellePrompt } from './prompts';
+import { getOogwayPrompt } from './prompts';
 
 
 const Timeline = () => {
@@ -13,7 +16,7 @@ const Timeline = () => {
   const [geminiReply, setGeminiReply] = useState("");
 
 
-  const fetchEntries = async () => {
+  const fetchEntries = async (coach) => {
     setLoading(true);
     setError(null);
 
@@ -35,9 +38,31 @@ const Timeline = () => {
       setEntries(entriesArray);
 
       // Generate prompt including today's entries
-      const fakerPrompt = getFakerPrompt(entriesArray);
-      console.log(fakerPrompt)
-      setPrompt(fakerPrompt.systemInstruction);
+
+      if (coach === "faker") {
+        const fakerPrompt = getFakerPrompt(entriesArray);
+        console.log(fakerPrompt)
+        setPrompt(fakerPrompt.systemInstruction);
+      }
+
+      if (coach === "david") {
+        const davidPrompt = getDavidPrompt(entriesArray);
+        console.log(davidPrompt)
+        setPrompt(davidPrompt.systemInstruction);
+      }
+
+      if (coach === "michelle") {
+        const michellePrompt = getMichellePrompt(entriesArray);
+        console.log(michellePrompt)
+        setPrompt(michellePrompt.systemInstruction);
+      }
+
+      if (coach === "oogway") {
+        const oogwayPrompt = getOogwayPrompt(entriesArray);
+        console.log(oogwayPrompt)
+        setPrompt(oogwayPrompt.systemInstruction);
+      }
+
 
     } catch (err) {
       setError(err.message);
@@ -47,7 +72,7 @@ const Timeline = () => {
   };
 
   useEffect(() => {
-    fetchEntries();
+    fetchEntries("oogway");
   }, []);
 
 const fetchPrompt = async () => {
@@ -105,7 +130,6 @@ const fetchPrompt = async () => {
         <p>Write your first journal entry!</p>
       )}
 
-      <p>{geminiReply}</p>
     </div>
   );
 };
