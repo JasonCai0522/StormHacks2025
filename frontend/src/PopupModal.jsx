@@ -2,9 +2,9 @@
 import React from 'react';
 import './PopupModal.css';
 
-const PopupModal = ({ show, onClose, imageSrc, children }) => {
+const PopupModal = ({ show, onClose, imageSrc, prompt, children }) => {
   if (!show) return null;
-
+  console.log({prompt});
   return (
     <div className="modal-overlay" onClick={onClose}>
       <div className="modal-content" onClick={e => e.stopPropagation()}>
@@ -13,13 +13,8 @@ const PopupModal = ({ show, onClose, imageSrc, children }) => {
           {children}
         </div>
         <div className="text-container">
-        <p>This is some text inside a scalable rectangular box. It resizes on smaller screens but caps at 500px width.</p>
-        <p>This is some text inside a scalable rectangular box. It resizes on smaller screens but caps at 500px width.</p>
-        <p>This is some text inside a scalable rectangular box. It resizes on smaller screens but caps at 500px width.</p>
-        <p>This is some text inside a scalable rectangular box. It resizes on smaller screens but caps at 500px width.</p>
-        <p>This is some text inside a scalable rectangular box. It resizes on smaller screens but caps at 500px width.</p>
-        <p>This is some text inside a scalable rectangular box. It resizes on smaller screens but caps at 500px width.</p>
-        <p>This is some text inside a scalable rectangular box. It resizes on smaller screens but caps at 500px width.</p>
+
+        {prompt}
         </div>
         <button className="modal-close" onClick={onClose}>✖</button>
       </div>
