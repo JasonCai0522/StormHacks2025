@@ -24,7 +24,7 @@ const Login = ({ setIsLoggedIn }) => {
     setErrorMsg('');
 
     try {
-      const response = await axios.post('http://localhost:3500/users/login', loginData, {
+      const response = await axios.post('https://stormhacks2025-t9xb.onrender.com/users/login', loginData, {
         withCredentials: true,
       });
 

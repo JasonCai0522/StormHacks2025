@@ -12,7 +12,7 @@ const fetchWithAuth = async (url, options = {}) => {
   
     if (res.status === 401) {
       // Token likely expired, try to refresh
-      const refreshRes = await fetch('http://localhost:3500/refresh', {
+      const refreshRes = await fetch('https://stormhacks2025-t9xb.onrender.com/refresh', {
         method: 'GET',
         credentials: 'include', // Important to send the cookie
       });

@@ -27,7 +27,7 @@ const Header = ({ isLoggedIn, setIsLoggedIn }) => {
     setIsLoggedIn(false);
     setShowButtons(true);
     localStorage.removeItem('accessToken');
-    const response = await axios.get('http://localhost:3500/users/logout')
+    const response = await axios.get('https://stormhacks2025-t9xb.onrender.com/users/logout')
     navigate("/");
   }
 

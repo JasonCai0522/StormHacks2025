@@ -14,7 +14,7 @@ const Timeline = () => {
     setError(null);
 
     try {
-      const res = await fetchWithAuth("http://localhost:3500/journal", {
+      const res = await fetchWithAuth("https://stormhacks2025-t9xb.onrender.com/journal", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
