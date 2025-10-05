@@ -26,7 +26,7 @@ const Home = () => {
         <p className="tagline">Write journals, get vision</p>
       </div>
        <div className="benefits-section">
-        <h2>Why Thousands Choose Reflection AI</h2>
+        <h2>Why Thousands Choose JournifyAI</h2>
         <div className="benefits-grid">
           
           <div className="benefit-card">
