@@ -40,7 +40,7 @@ const Header = ({ isLoggedIn, setIsLoggedIn }) => {
   return (
 
     <header class="App-header">
-        <h1>placeholder</h1>
+        <h1>JournifyAI</h1>
         <div className="button-group">
           {showButtons && (
             <>
