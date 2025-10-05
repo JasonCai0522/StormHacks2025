@@ -14,6 +14,7 @@ const credentials =require('./Middleware/credentials.js');
 // Importing Routes
 const userRoutes = require('./Routes/api/User')
 const journalRoutes = require('./Routes/api/Journal.js')
+const geminiRoutes = require('./Routes/Gemini.js')
 
 
 const connectDatabase = require('./Config/connectDatabase');
@@ -38,8 +39,10 @@ app.use(cookieParser());
 app.use("/users", userRoutes);
 
 // Everything after this requires authorization
+// 
 app.use(authUser);
 app.use(journalRoutes);
+app.use(geminiRoutes);
 
 
 
