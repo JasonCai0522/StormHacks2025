@@ -12,7 +12,7 @@ const Home = () => {
 
       <div className="image-placeholder">
         {/* Simulated app preview */}
-        <img src="/heroImg.png" alt="Hero" />
+        <img src="/mockup.png" alt="Hero" />
       </div>
     </div>
   );
