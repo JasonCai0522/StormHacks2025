@@ -13,7 +13,6 @@ const PopupModal = ({ show, onClose, imageSrc, prompt, children }) => {
           {children}
         </div>
         <div className="text-container">
-
         {prompt}
         </div>
         <button className="modal-close" onClick={onClose}>✖</button>
