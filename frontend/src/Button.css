@@ -1,0 +1,32 @@
+.home-button {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    border: none;
+    background-color: #eee;
+    cursor: pointer;
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: background-color 0.2s ease;
+    max-width: 250px;         /* ✅ Prevents growing too wide */
+    width: 100%;              /* ✅ Responsive within container */
+    box-sizing: border-box;
+  }
+  
+  
+  .home-button:hover {
+    background-color: #ddd;
+  }
+  
+  .button-image {
+    width: 40px;
+    height: 40px;
+    max-width: 40px;
+    max-height: 40px;
+    object-fit: cover;       /* Keeps the image nicely cropped */
+    border-radius: 50%;      /* Optional: makes it circular */
+    flex-shrink: 0;          /* Prevents image from shrinking */
+  }
+  
+  
