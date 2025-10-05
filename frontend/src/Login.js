@@ -1,12 +1,18 @@
 import React, { useState } from 'react';
-import axios from 'axios';              // <-- Import axios
-import { Link, useNavigate } from 'react-router-dom'; // <-- Import useNavigate
+import axios from 'axios';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import './Login.css';
 
-const Login = () => {
+const Login = ({ setIsLoggedIn }) => {
   const [loginData, setLoginData] = useState({ username: '', password: '' });
   const [errorMsg, setErrorMsg] = useState('');
-  const navigate = useNavigate();      // <-- Setup navigate for redirect
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  // Get the attempted route, or fallback to home
+  const from = location.state?.from?.pathname || '/';
+
+  console.log("📍 Login redirect target (from):", from);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -15,26 +21,28 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setErrorMsg(''); // clear any previous error message
+    setErrorMsg('');
 
     try {
-        console.log("skibidi")
       const response = await axios.post('http://localhost:3500/users/login', loginData, {
-        withCredentials: true, // to send cookies if backend sets any
+        withCredentials: true,
       });
-      console.log("skibidi 2")
-      console.log(response.data)
 
       if (response.status === 200) {
-        // Optionally store access token if you want:
-        localStorage.setItem('accessToken', response.data.accessToken);
+        const accessToken = response.data.accessToken;
 
-        // Redirect to homepage
-        navigate('/');
+        //testing token
+        console.log("🪪 Received access token:", accessToken);
+
+        // Save token and update login state
+        localStorage.setItem('accessToken', accessToken);
+        setIsLoggedIn(true);
+
+        // Redirect to the original route or home
+        navigate(from, { replace: true });
       }
     } catch (error) {
-      // Handle error response from backend
-      if (error.response && error.response.data && error.response.data.message) {
+      if (error.response?.data?.message) {
         setErrorMsg(error.response.data.message);
       } else {
         setErrorMsg('Login failed. Please try again.');
