@@ -162,26 +162,45 @@
 
 .coaches {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); /* squares */
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); /* squares */
   gap: 20px; /* space between buttons */
   justify-items: center; /* center buttons in each grid cell */
   align-items: center;
   padding: 20px;
 }
 
-.coachButtons {
-  width: 100%;
+.coachButton {
+  width: 90%;
   aspect-ratio: 1 / 1; /* makes buttons square */
   background-color: #000;
   color: #fff;
   border: none;
   border-radius: 8px;
-  font-size: 1rem;
+  font-size: 1.8rem;
   cursor: pointer;
   transition: transform 0.2s, background-color 0.2s;
 }
 
-.coachButtons:hover {
+.coachButton:hover {
   background-color: #333;
   transform: scale(1.05);
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  text-align: left;
+}
+
+.journal-navigation {
+  display:flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.timeline {
+  text-align: left;      /* aligns text to the left */
+  max-width: 600px;      /* optional: limits width for readability */
+  padding: 20px;         /* optional: spacing inside container */
 }

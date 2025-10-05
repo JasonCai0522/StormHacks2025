@@ -18,9 +18,9 @@ const Coaches = () => {
     <coaches>
         <h1>Coaches</h1>
         <div className ="coaches">
-              <Button className = "coachButton" text="david goggins" onClick={() => handleCoach1()} />
-              <Button className = "coachButton" text="master oogway" onClick={() => handleCoach2()} />
-              <Button className = "coachButton" text="michael jordan" onClick={() => handleCoach3()} />
+              <Button className = "coachButton" text="David Goggins" onClick={() => handleCoach1()} />
+              <Button className = "coachButton" text="Master Oogway" onClick={() => handleCoach2()} />
+              <Button className = "coachButton" text="Michelle Obama" onClick={() => handleCoach3()} />
               <Button className = "coachButton" text="Faker" onClick={() => handleCoach4()} />
         </div>
     </coaches>

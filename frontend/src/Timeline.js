@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Button from './Button';
 import fetchWithAuth from './FetchWithAuth';
+import EntryStorage from "./EntryStorage";
 
 
 const Timeline = () => {
@@ -41,19 +42,15 @@ const Timeline = () => {
 
   return (
     <div className="timeline">
+      {loading && <p>Loading...</p>}
 
-    <ul>
-    {entries.length > 0 ? (
-        entries.map((entryObj, index) => (
-        <li key={entryObj._id || index}>
-            <strong>{new Date(entryObj.date).toLocaleString()}</strong>
-            <p>{entryObj.entry}</p>
-        </li>
-        ))
-        ) : (
-          <p>No entries yet.</p>
-        )}
-      </ul>
+      {error ? (
+        <p style={{ color: "red" }}>{error}</p>
+      ) : entries.length > 0 ? (
+        <EntryStorage entries={entries} />
+      ) : (
+        <p>Write your first journal entry!</p>
+      )}
     </div>
   );
 };

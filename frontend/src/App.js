@@ -52,7 +52,7 @@ function App() {
   <Route path="/login" element={<Login setIsLoggedIn={setIsLoggedIn} />} />
   <Route path="/register" element={<Register />} />
 
-  {/* ✅ Protected routes */}
+  {/* Protected routes */}
   <Route
     path="/mainScreen"
     element={
