@@ -25,7 +25,7 @@ const Home = () => {
         <p> Receive insightful feedback tailored to your chosen perspective. Uncover blindspots and find your path forward.</p>
         <p className="tagline">Write journals, get vision</p>
       </div>
-      <div className="benefits-section">
+       <div className="benefits-section">
         <h2>Why Thousands Choose Reflection AI</h2>
         <div className="benefits-grid">
           
