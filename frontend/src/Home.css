@@ -71,29 +71,27 @@ container for image and text
 .benefits-section h2 {
   font-size: 2rem;
   font-weight: 700;
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
   color: #333;
 }
 
 .benefits-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr; /* Three equal columns */
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 2rem;
+  margin-top: 2rem;
   max-width: 1000px;
-  margin: 0 auto;
-  align-items: start; /* Align cards to the top */
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .benefit-card {
-  padding: 2rem 1.5rem;
+  padding: 2rem;
   border-radius: 12px;
   background: #f8f9fa;
   border: 1px solid #e9ecef;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   text-align: center;
-  height: 100%; /* Make cards equal height */
-  display: flex;
-  flex-direction: column;
 }
 
 .benefit-card:hover {
@@ -117,13 +115,12 @@ container for image and text
   color: #666;
   line-height: 1.5;
   font-size: 1rem;
-  flex-grow: 1; /* Push content to fill space evenly */
 }
 
-/* Responsive design - stack on mobile */
+/* Responsive design for smaller screens */
 @media (max-width: 768px) {
   .benefits-grid {
-    grid-template-columns: 1fr; /* Single column on mobile */
+    grid-template-columns: 1fr;
     gap: 1.5rem;
   }
   
@@ -133,7 +130,6 @@ container for image and text
   
   .benefits-section h2 {
     font-size: 1.75rem;
-    margin-bottom: 2rem;
   }
 }
 
