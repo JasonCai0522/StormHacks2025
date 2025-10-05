@@ -1,32 +1,39 @@
-import logo from './logo.svg';
+// App.js
 import './App.css';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 
-
-// Will stay on page
 import Header from './Header';
 import Nav from "./Nav";
 import Footer from "./Footer";
 
 import Home from './Home';
-//import NewPost from './NewPost';
-//import PostPage from './PostPage';
 import About from './About';
-//import Missing from './Missing';
-import Login from './Login'
-import Register from './Register'
+import Login from './Login';
+import Register from './Register';
 import MainScreen from './MainScreen';
 import Sidebar from './Sidebar';
 import Entry from './Entry';
-import Coaches from  './Coaches';
+import Coaches from './Coaches';
 import Checklist from './Checklist';
 import Timeline from './Timeline';
 
-import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
-import { useState, useEffect } from 'react';
+import ProtectedRoute from './ProtectedRoute'; // ⬅️ Import the component
 
 function App() {
-
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  // 🔁 Sync login state with localStorage
+  useEffect(() => {
+    const token = localStorage.getItem('accessToken');
+    setIsLoggedIn(!!token);
+
+    const loggedIn = !!token; // ✅ Define it
+    setIsLoggedIn(loggedIn);
+  
+    console.log("🔐 User login state:", loggedIn);
+    console.log("🪪 Token from localStorage:", token);
+  }, []);
 
   return (
     <div className="App">
@@ -43,26 +50,63 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
-        <Route path="/login" element={<Login />} />
+        <Route path="/login" element={<Login setIsLoggedIn={setIsLoggedIn} />} />
         <Route path="/register" element={<Register />} />
+
+        {/* ✅ Protected Routes */}
         <Route
           path="/mainScreen"
           element={
-            isLoggedIn ? (
+            <ProtectedRoute>
               <MainScreen isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
-            ) : (
-              <Login setIsLoggedIn={setIsLoggedIn} />
-            )
+            </ProtectedRoute>
           }
         />
-        <Route path="/entry" element={<Entry />} />
-        <Route path="/timeline" element={<Timeline />} />
-        <Route path="/coaches" element={<Coaches />} />
-        <Route path="/checklist" element={<Checklist />} />
+        <Route
+          path="/entry"
+          element={
+            <ProtectedRoute>
+              <Entry />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/timeline"
+          element={
+            <ProtectedRoute>
+              <Timeline />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/coaches"
+          element={
+            <ProtectedRoute>
+              <Coaches />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/checklist"
+          element={
+            <ProtectedRoute>
+              <Checklist />
+            </ProtectedRoute>
+          }
+        />
       </Routes>
+
       <Footer />
     </div>
   );
 }
 
 export default App;
+
+
+
+/*
+localStorage.removeItem('accessToken');
+setIsLoggedIn(false);
+navigate('/login');
+*/
