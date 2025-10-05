@@ -401,3 +401,64 @@ export const getFakerPrompt = (entries) => {
     ${todaysText}`
     }; 
 };
+
+export const getDavidPrompt = (entries) => {
+  const todayString = new Date().toLocaleDateString();
+
+  const todaysEntries = entries.filter(
+    (entry) => new Date(entry.date).toLocaleDateString() === todayString
+  );
+
+  const todaysText = todaysEntries
+    .map((entry, i) => `${i + 1}. ${entry.entry}`)
+    .join("\n");
+
+  return {
+    ...DAVID_GOGGINS_BOT,
+    systemInstruction: `${DAVID_GOGGINS_BOT.systemInstruction}
+
+    Here are today's journal entries:
+    ${todaysText}`
+    }; 
+};
+
+
+export const getMichellePrompt = (entries) => {
+  const todayString = new Date().toLocaleDateString();
+
+  const todaysEntries = entries.filter(
+    (entry) => new Date(entry.date).toLocaleDateString() === todayString
+  );
+
+  const todaysText = todaysEntries
+    .map((entry, i) => `${i + 1}. ${entry.entry}`)
+    .join("\n");
+
+  return {
+    ...MICHELLE_OBAMA_BOT,
+    systemInstruction: `${MICHELLE_OBAMA_BOT.systemInstruction}
+
+    Here are today's journal entries:
+    ${todaysText}`
+    }; 
+};
+
+export const getOogwayPrompt = (entries) => {
+  const todayString = new Date().toLocaleDateString();
+
+  const todaysEntries = entries.filter(
+    (entry) => new Date(entry.date).toLocaleDateString() === todayString
+  );
+
+  const todaysText = todaysEntries
+    .map((entry, i) => `${i + 1}. ${entry.entry}`)
+    .join("\n");
+
+  return {
+    ...MASTER_OOGWAY_BOT,
+    systemInstruction: `${MASTER_OOGWAY_BOT.systemInstruction}
+
+    Here are today's journal entries:
+    ${todaysText}`
+    }; 
+};

@@ -2,10 +2,69 @@ import Button from './Button'
 import fetchWithAuth from './FetchWithAuth';
 import EntryStorage from "./EntryStorage";
 import { getFakerPrompt } from './prompts';
+import { getDavidPrompt } from './prompts';
+import { getMichellePrompt } from './prompts';
+import { getOogwayPrompt } from './prompts';
 import React, { useState, useEffect } from "react";
+import Timeline from './Timeline';
 
 
 const Coaches = () => {
+
+  const fetchEntries = async (coach) => {
+    setLoading(true);
+    setError(null);
+
+    try {
+      const res = await fetchWithAuth("https://stormhacks2025-t9xb.onrender.com/journal", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${localStorage.getItem('accessToken')}`
+        },
+      });
+
+      if (!res.ok) {
+        throw new Error("Failed to connect to server");
+      }
+
+      const data = await res.json();
+      const entriesArray = Array.isArray(data) ? data : [data];
+      setEntries(entriesArray);
+
+      // Generate prompt including today's entries
+
+      if (coach === "faker") {
+        const fakerPrompt = getFakerPrompt(entriesArray);
+        console.log(fakerPrompt)
+        setPrompt(fakerPrompt.systemInstruction);
+      }
+
+      if (coach === "david") {
+        const davidPrompt = getDavidPrompt(entriesArray);
+        console.log(davidPrompt)
+        setPrompt(davidPrompt.systemInstruction);
+      }
+
+      if (coach === "michelle") {
+        const michellePrompt = getMichellePrompt(entriesArray);
+        console.log(michellePrompt)
+        setPrompt(michellePrompt.systemInstruction);
+      }
+
+      if (coach === "oogway") {
+        const oogwayPrompt = getOogwayPrompt(entriesArray);
+        console.log(oogwayPrompt)
+        setPrompt(oogwayPrompt.systemInstruction);
+      }
+
+
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const [entries, setEntries] = useState([]);
   const [prompt, setPrompt] = useState("");
@@ -14,15 +73,19 @@ const Coaches = () => {
   const [geminiReply, setGeminiReply] = useState("");
 
   const handleCoach1 = () => {
+     fetchEntries("david");
   }
 
   const handleCoach2 = () => {
+     fetchEntries("oogway");
   }
 
   const handleCoach3 = () => {
+    fetchEntries("michelle");
   }
 
   const handleCoach4 = () => {
+     fetchEntries("faker");
   }
 
   const fetchPrompt = async () => {
