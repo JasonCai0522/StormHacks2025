@@ -6,8 +6,12 @@ const cookieParser = require('cookie-parser');
 require('dotenv').config();
 const mongoose = require('mongoose');
 
+// Custom middleware
+const authUser = require('./Middleware/auth')
+
 // Importing Routes
 const userRoutes = require('./Routes/api/User')
+const journalRoutes = require('./Routes/api/Journal.js')
 
 
 const connectDatabase = require('./Config/connectDatabase');
@@ -29,6 +33,11 @@ app.use(cookieParser());
 
 // Routes
 app.use("/users", userRoutes);
+
+// Everything after this requires authorization
+app.use(authUser);
+app.use(journalRoutes);
+
 
 
 

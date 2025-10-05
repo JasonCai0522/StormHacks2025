@@ -15,7 +15,7 @@ const loginUser = async (req, res) => {
         
         console.log(foundUser);
         const accessToken = jwt.sign(
-            {userInfo: 
+            {"userInfo": 
                 {
                     "username": username,
                     "journalEntries":foundUser.journalEntries,
@@ -40,6 +40,8 @@ const loginUser = async (req, res) => {
 
         res.cookie('jwt', refreshToken, {httpOnly: true, maxAge: 24 * 60 * 60 * 1000, sameSite: 'None'})
         res.status(200).json({accessToken})
+    } else {
+        return res.status(403).json({"message": "Wrong password"});
     }
 }
 
