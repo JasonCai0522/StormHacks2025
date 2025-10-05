@@ -399,6 +399,5 @@ export const getFakerPrompt = (entries) => {
 
     Here are today's journal entries:
     ${todaysText}`
-    };
-    
+    }; 
 };

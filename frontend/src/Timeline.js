@@ -65,8 +65,10 @@ const fetchPrompt = async () => {
         "Content-Type": "application/json",
         "Authorization": `Bearer ${localStorage.getItem("accessToken")}`,
       },
-      body: JSON.stringify({ "prompt": "hello world" }), // send prompt in request body
+      body: JSON.stringify({ prompt }), // send prompt in request body
     });
+    console.log({prompt});
+
 
     console.log(res)
 
@@ -86,10 +88,10 @@ const fetchPrompt = async () => {
 };
 
   useEffect(() => {
-    fetchPrompt();
-    console.log(geminiReply);
-    console.log("Updated geminiReply:", geminiReply);
-  }, [geminiReply]);
+    if (prompt) {
+      fetchPrompt();
+    }
+  }, [prompt]);
 
   return (
     <div className="timeline">
