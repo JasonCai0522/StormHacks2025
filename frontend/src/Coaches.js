@@ -128,11 +128,16 @@ const Coaches = () => {
       </div>
 
       {popupData && (
-        <PopupModal show={true} onClose={closePopup} imageSrc={popupData.image}>
-          <h2>{popupData.title}</h2>
-          <p>{popupData.prompt}</p>
-        </PopupModal>
-      )}
+  <PopupModal
+    show={true}
+    onClose={closePopup}
+    imageSrc={popupData.image}
+    prompt={popupData.prompt}  // Pass prompt explicitly here
+  >
+    <h2>{popupData.title}</h2>
+    {/* Remove <p>{popupData.prompt}</p> here */}
+  </PopupModal>
+)}
 
       {loading && <p>Loading...</p>}
       {error && <p style={{ color: 'red' }}>{error}</p>}
