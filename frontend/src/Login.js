@@ -39,7 +39,11 @@ const Login = ({ setIsLoggedIn }) => {
         setIsLoggedIn(true);
 
         // Redirect to the original route or home
-        navigate(from, { replace: true });
+        if (from == "/") {
+            navigate("/mainScreen", { replace: true });
+        } else {
+            navigate(from, { replace: true });
+        }
       }
     } catch (error) {
       if (error.response?.data?.message) {
