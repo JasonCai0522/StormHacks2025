@@ -39,86 +39,61 @@ function App() {
       <Header isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
       <Nav />
 
-      {isLoggedIn && (
-        <div style={{ display: "flex" }}>
-          <Sidebar />
-          <MainScreen />
-        </div>
-      )}
-
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/login" element={<Login setIsLoggedIn={setIsLoggedIn} />} />
-        <Route path="/register" element={<Register />} />
-
-        {/* ✅ Protected Routes */}
-        <Route
-          path="/mainScreen"
-          element={
-            <ProtectedRoute>
-              <MainScreen isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/entry"
-          element={
-            <ProtectedRoute>
-              <Entry />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/timeline"
-          element={
-            <ProtectedRoute>
-              <Timeline />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/coaches"
-          element={
-            <ProtectedRoute>
-              <Coaches />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/checklist"
-          element={
-            <ProtectedRoute>
-              <Checklist />
-            </ProtectedRoute>
-          }
-        />
-      </Routes>
-
-      <Footer />
       <div className="main-container">
         {/* Sidebar only visible when logged in */}
         {isLoggedIn && <Sidebar />}
 
         {/* Main content area */}
         <div className={`entry ${isLoggedIn ? "with-sidebar" : "fullscreen"}`}>
-          <Routes>
-            {/* Public routes */}
-            <Route path="/" element={<Home />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/login" element={<Login setIsLoggedIn={setIsLoggedIn} />} />
-            <Route path="/register" element={<Register />} />
+        <Routes>
+  {/* Public routes */}
+  <Route path="/" element={<Home />} />
+  <Route path="/about" element={<About />} />
+  <Route path="/login" element={<Login setIsLoggedIn={setIsLoggedIn} />} />
+  <Route path="/register" element={<Register />} />
 
-            {/* Private routes */}
-            <Route
-              path="/mainScreen"
-              element={isLoggedIn ? <MainScreen isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} /> : <Login setIsLoggedIn={setIsLoggedIn} />}
-            />
-            <Route path="/entry" element={isLoggedIn ? <Entry /> : <Login setIsLoggedIn={setIsLoggedIn} />} />
-            <Route path="/timeline" element={isLoggedIn ? <Timeline /> : <Login setIsLoggedIn={setIsLoggedIn} />} />
-            <Route path="/coaches" element={isLoggedIn ? <Coaches /> : <Login setIsLoggedIn={setIsLoggedIn} />} />
-            <Route path="/checklist" element={isLoggedIn ? <Checklist /> : <Login setIsLoggedIn={setIsLoggedIn} />} />
-          </Routes>
+  {/* ✅ Protected routes */}
+  <Route
+    path="/mainScreen"
+    element={
+      <ProtectedRoute>
+        <MainScreen isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
+      </ProtectedRoute>
+    }
+  />
+  <Route
+    path="/entry"
+    element={
+      <ProtectedRoute>
+        <Entry />
+      </ProtectedRoute>
+    }
+  />
+  <Route
+    path="/timeline"
+    element={
+      <ProtectedRoute>
+        <Timeline />
+      </ProtectedRoute>
+    }
+  />
+  <Route
+    path="/coaches"
+    element={
+      <ProtectedRoute>
+        <Coaches />
+      </ProtectedRoute>
+    }
+  />
+  <Route
+    path="/checklist"
+    element={
+      <ProtectedRoute>
+        <Checklist />
+      </ProtectedRoute>
+    }
+  />
+</Routes>
         </div>
       </div>
     </div>

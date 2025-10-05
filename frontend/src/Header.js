@@ -25,6 +25,7 @@ const Header = ({ isLoggedIn, setIsLoggedIn }) => {
   const handleLogout = () => {
     setIsLoggedIn(false);
     setShowButtons(true);
+    //localStorage.removeItem('accessToken');
     navigate("/");
   }
 
@@ -44,7 +45,6 @@ const Header = ({ isLoggedIn, setIsLoggedIn }) => {
               <Button className = "register-button" text="About Us" onClick={() => handleAbout()} />
               <Button className = "login-button" text="Register" onClick={() => handleRegister()} />
               <Button className = "login-button" text="Login" onClick={() => handleLogin()} />
-              <Button className = "login-button" text="main" onClick={() => handleMain()} />
             </>
           )}
           {!showButtons && !isLoggedIn &&(

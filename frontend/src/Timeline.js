@@ -12,11 +12,12 @@ const Timeline = () => {
     setError(null);
 
     try {
+        const token = localStorage.getItem('accessToken');
       const res = await fetch("http://localhost:3500/journal", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
-          "Authorization": `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySW5mbyI6eyJ1c2VybmFtZSI6InVzZXIzIn0sImlhdCI6MTc1OTY1MjgzMSwiZXhwIjoxNzU5NjUzNDMxfQ.uizoNOh2umIK99O4zP22OJ00ewf96jDYf2xcuxPn7ms`, // ✅ send token
+          "Authorization": `Bearer ${token}`
         },
       });
 
