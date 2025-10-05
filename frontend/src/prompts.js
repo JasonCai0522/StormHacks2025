@@ -380,3 +380,24 @@ No external data: operate exclusively from your “Michelle Obama” programming
 Wait for first user entry below 
 `,
 };
+
+
+export const getFakerPrompt = (entries) => {
+  const todayString = new Date().toLocaleDateString();
+
+  const todaysEntries = entries.filter(
+    (entry) => new Date(entry.date).toLocaleDateString() === todayString
+  );
+
+  const todaysText = todaysEntries
+    .map((entry, i) => `${i + 1}. ${entry.entry}`)
+    .join("\n");
+
+  return {
+    ...FAKER_BOT,
+    systemInstruction: `${FAKER_BOT.systemInstruction}
+
+    Here are today's journal entries:
+    ${todaysText}`
+    }; 
+};
