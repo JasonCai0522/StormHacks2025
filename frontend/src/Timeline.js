@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Button from './Button';
+import fetchWithAuth from './FetchWithAuth';
 
 
 const Timeline = () => {
@@ -12,11 +13,11 @@ const Timeline = () => {
     setError(null);
 
     try {
-      const res = await fetch("http://localhost:3500/journal", {
+      const res = await fetchWithAuth("https://stormhacks2025-t9xb.onrender.com/journal", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
-          "Authorization": `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySW5mbyI6eyJ1c2VybmFtZSI6InVzZXIzIn0sImlhdCI6MTc1OTY1MjgzMSwiZXhwIjoxNzU5NjUzNDMxfQ.uizoNOh2umIK99O4zP22OJ00ewf96jDYf2xcuxPn7ms`, // ✅ send token
+          "Authorization": `Bearer ${localStorage.getItem('accessToken')}`
         },
       });
 

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import fetchWithAuth from './FetchWithAuth';
 
 const Entry = () => {
   const [entry, setEntry] = useState(""); // journal text input
@@ -11,12 +12,13 @@ const Entry = () => {
     setLoading(true);
     setError(null);
 
+
     try {
-      const res = await fetch("http://localhost:3500/journal", {
+      const res = await fetchWithAuth("https://stormhacks2025-t9xb.onrender.com/journal", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          "Authorization": `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySW5mbyI6eyJ1c2VybmFtZSI6InVzZXIzIn0sImlhdCI6MTc1OTY1MjgzMSwiZXhwIjoxNzU5NjUzNDMxfQ.uizoNOh2umIK99O4zP22OJ00ewf96jDYf2xcuxPn7ms`, // ✅ send token
+          "Authorization": `Bearer ${localStorage.getItem('accessToken')}`
         },
         body: JSON.stringify({ entry }), // ✅ send the journal entry in the body
       });
