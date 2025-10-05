@@ -1,8 +1,6 @@
 const axios = require('axios');
 const { GoogleGenAI } = require("@google/genai");
 
-const GEMINI_API_URL = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent';
-
 const ai = new GoogleGenAI({});
 
 async function main(prompt) {
