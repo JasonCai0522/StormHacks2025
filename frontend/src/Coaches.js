@@ -1,10 +1,14 @@
+import Button from './Button'
+import fetchWithAuth from './FetchWithAuth';
+import EntryStorage from "./EntryStorage";
+import { getFakerPrompt } from './prompts';
+import React, { useState, useEffect } from "react";
+
 import React, { useState } from 'react';
 import Button from './Button';
 import PopupModal from './PopupModal'; // Make sure this exists
 
 const Coaches = () => {
-  const [popupData, setPopupData] = useState(null);
-
   const handleCoach1 = () => {
     setPopupData({
       title: "David Goggins",
@@ -30,16 +34,7 @@ const Coaches = () => {
   };
 
   const handleCoach4 = () => {
-    setPopupData({
-      title: "Faker",
-      //description: "Discipline and precision. Faker helps you optimize your mindset like a pro.",
-      image: "/faker.png",
-    });
-  };
-
-  const closePopup = () => {
-    setPopupData(null);
-  };
+  }
 
   return (
     <div className="coaches-container">
