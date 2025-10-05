@@ -2,11 +2,11 @@ const express = require('express');
 const router = express.Router();
 
 // Controllers
-const {getEntries} = require('../../Controller/entryController');
+const {getUserEntries, createUserEntries} = require('../../Controller/entryController');
 
 router.route('/journal')
-    .get(getEntries);
-//    .post()
+    .get(getUserEntries)
+    .post(createUserEntries);
 //    .put()
 //    .delete();
 

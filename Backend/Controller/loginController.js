@@ -18,7 +18,6 @@ const loginUser = async (req, res) => {
             {"userInfo": 
                 {
                     "username": username,
-                    "journalEntries":foundUser.journalEntries,
                 }
             }, // Payload
             process.env.ACCESS_TOKEN_SECRET,
