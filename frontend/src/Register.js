@@ -17,7 +17,7 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:3500/users/register', registerData, {
+      const response = await axios.post('https://stormhacks2025-t9xb.onrender.com/users/register', registerData, {
         headers: { 'Content-Type': 'application/json' },
         withCredentials: true
       });
