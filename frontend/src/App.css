@@ -3,9 +3,17 @@
   box-sizing: border-box;
 }
 
+body {
+    margin: 0;
+    padding: 0;
+}
+
+
+
 .App {
   text-align: center;
   font-family: sans-serif;
+  
 }
 
 /* Header */
@@ -106,6 +114,8 @@
   flex: 1; /* take remaining space */
   margin-left: 0; /* sidebar already takes space in flex */
   padding: 20px;
+  display:flex;
+  justify-content: center;
 }
 
 .entry.fullscreen {
@@ -135,8 +145,9 @@
   width: 100%;           /* full width of sidebar */
   padding: 10px 15px;
   font-size: 1.4rem;
-  border-radius: 5px;
-  border: none;
+  border-style: solid;
+  border-width: 2px;
+  border-color: #ffffff;
   background-color: #000;
   color: #fff;
   cursor: pointer;
@@ -154,20 +165,38 @@
 }
 
 .side-button-group {
-  margin-top: 35%;
+  
+  height:100%;
   display: flex;
   flex-direction: column;  /* stack buttons vertically */
-  gap: 50px;               /* space between buttons */
+  gap: 0px;               /* space between buttons */
 }
 
 .coaches {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); /* squares */
+  display:flex;
   gap: 20px; /* space between buttons */
   justify-items: center; /* center buttons in each grid cell */
   align-items: center;
   padding: 20px;
 }
+.collapseButton {
+    width:98%;
+    height:20%;
+    max-height:40px;
+    background-color: black;
+    color:rgb(255, 173, 173);
+    font-size:2rem;
+}
+
+.openButton {
+    width:98%;
+    height:100%;
+    max-height:40px;
+    background-color: black;
+    color:rgb(173, 255, 191);
+    font-size:2rem;
+}
+
 
 .coachButton {
   width: 90%;
@@ -201,6 +230,6 @@ ul {
 
 .timeline {
   text-align: left;      /* aligns text to the left */
-  max-width: 600px;      /* optional: limits width for readability */
+  width:80%;
   padding: 20px;         /* optional: spacing inside container */
 }
