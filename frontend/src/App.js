@@ -1,6 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 
+
 // Will stay on page
 import Header from './Header';
 import Nav from "./Nav";
@@ -11,6 +12,8 @@ import Home from './Home';
 //import PostPage from './PostPage';
 import About from './About';
 //import Missing from './Missing';
+import Login from './Login'
+import Register from './Register'
 
 import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
@@ -23,6 +26,8 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
       </Routes>
       <Footer />
     </div>
