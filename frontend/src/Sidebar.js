@@ -28,9 +28,6 @@ const Sidebar = () => {
     navigate("/coaches");
   };
 
-  const handleChecklist = () => {
-    navigate("/checklist");
-  };
 
   return (
     <sidebar>
@@ -43,7 +40,6 @@ const Sidebar = () => {
               <Button className = "sideButton" text="Write Entry" onClick={() => handleEntry()} />
               <Button className = "sideButton" text="Timeline" onClick={() => handleTimeline()} />
               <Button className = "sideButton" text="Coaches" onClick={() => handleCoaches()} />
-              <Button className = "sideButton" text="Checklist" onClick={() => handleChecklist()} />
           </div>
         )}
 

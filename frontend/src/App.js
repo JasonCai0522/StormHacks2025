@@ -14,7 +14,6 @@ import MainScreen from './MainScreen';
 import Sidebar from './Sidebar';
 import Entry from './Entry';
 import Coaches from './Coaches';
-import Checklist from './Checklist';
 import Timeline from './Timeline';
 
 import ProtectedRoute from './ProtectedRoute'; // ⬅️ Import the component
@@ -82,14 +81,6 @@ function App() {
     element={
       <ProtectedRoute>
         <Coaches />
-      </ProtectedRoute>
-    }
-  />
-  <Route
-    path="/checklist"
-    element={
-      <ProtectedRoute>
-        <Checklist />
       </ProtectedRoute>
     }
   />
