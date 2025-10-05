@@ -1,3 +1,15 @@
+
+
+
+
+container for image and text 
+.container {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+}
+
 .home-container {
     display: flex;
     flex-direction: column;
