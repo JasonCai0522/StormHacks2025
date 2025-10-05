@@ -25,6 +25,30 @@ const Home = () => {
         <p> Receive insightful feedback tailored to your chosen perspective. Uncover blindspots and find your path forward.</p>
         <p className="tagline">Write journals, get vision</p>
       </div>
+      <div className="benefits-section">
+        <h2>Why Thousands Choose Reflection AI</h2>
+        <div className="benefits-grid">
+          
+          <div className="benefit-card">
+            <div className="benefit-icon">💭</div>
+            <h3>Break Thought Patterns</h3>
+            <p>Escape echo chambers and see your challenges from entirely new angles with multiple AI perspectives.</p>
+          </div>
+
+          <div className="benefit-card">
+            <div className="benefit-icon">⚡</div>
+            <h3>Instant Clarity</h3>
+            <p>Go from confused to clear in minutes. Get tailored insights that address your specific situation and needs.</p>
+          </div>
+
+          <div className="benefit-card">
+            <div className="benefit-icon">🛡️</div>
+            <h3>Always Available</h3>
+            <p>Your AI coaches are ready 24/7. No appointments, no judgments, just honest feedback when you need it most.</p>
+          </div>
+          
+        </div>
+      </div>
     </div>
   );
 };
