@@ -1,0 +1,15 @@
+
+  .video-ribbon-container {
+    width: 100vw;
+    height: auto;
+    overflow: hidden;
+    position: relative;
+    background-color: #000;
+  }
+  
+  .video-ribbon {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
