@@ -23,8 +23,9 @@ const Header = ({ isLoggedIn, setIsLoggedIn }) => {
   };
 
   const handleLogout = () => {
-    navigate("/");
+    setIsLoggedIn(false);
     setShowButtons(true);
+    navigate("/");
   }
 
   const handleMain = () => {
@@ -48,6 +49,10 @@ const Header = ({ isLoggedIn, setIsLoggedIn }) => {
           )}
           {!showButtons && !isLoggedIn &&(
             <Button className = "login-button" text="Return Home" onClick={() => handleLogout()} />
+          )}
+          
+          {!showButtons && isLoggedIn &&(
+            <Button className = "login-button" text="Logout" onClick={() => handleLogout()} />
           )}
         </div>
            

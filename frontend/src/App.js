@@ -5,7 +5,6 @@ import { useState, useEffect } from 'react';
 
 import Header from './Header';
 import Nav from "./Nav";
-import Footer from "./Footer";
 
 import Home from './Home';
 import About from './About';
@@ -36,7 +35,7 @@ function App() {
   }, []);
 
   return (
-    <div className="App">
+     <div className="App">
       <Header isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
       <Nav />
 
@@ -97,6 +96,31 @@ function App() {
       </Routes>
 
       <Footer />
+      <div className="main-container">
+        {/* Sidebar only visible when logged in */}
+        {isLoggedIn && <Sidebar />}
+
+        {/* Main content area */}
+        <div className={`entry ${isLoggedIn ? "with-sidebar" : "fullscreen"}`}>
+          <Routes>
+            {/* Public routes */}
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/login" element={<Login setIsLoggedIn={setIsLoggedIn} />} />
+            <Route path="/register" element={<Register />} />
+
+            {/* Private routes */}
+            <Route
+              path="/mainScreen"
+              element={isLoggedIn ? <MainScreen isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} /> : <Login setIsLoggedIn={setIsLoggedIn} />}
+            />
+            <Route path="/entry" element={isLoggedIn ? <Entry /> : <Login setIsLoggedIn={setIsLoggedIn} />} />
+            <Route path="/timeline" element={isLoggedIn ? <Timeline /> : <Login setIsLoggedIn={setIsLoggedIn} />} />
+            <Route path="/coaches" element={isLoggedIn ? <Coaches /> : <Login setIsLoggedIn={setIsLoggedIn} />} />
+            <Route path="/checklist" element={isLoggedIn ? <Checklist /> : <Login setIsLoggedIn={setIsLoggedIn} />} />
+          </Routes>
+        </div>
+      </div>
     </div>
   );
 }
