@@ -23,7 +23,6 @@ const Home = () => {
         <p> Match your mood or challenge. Need a push? Need a plan? Choose the voice that fits.</p>
         <h2> 3. Get Vision & Take Action</h2>
         <p> Receive insightful feedback tailored to your chosen perspective. Uncover blindspots and find your path forward.</p>
-        <p className="tagline">Write journals, get vision</p>
       </div>
        <div className="benefits-section">
         <h2>Why Thousands Choose JournifyAI</h2>
